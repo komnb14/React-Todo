@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdAddCircle } from 'react-icons/md';
 import Template from './Template';
 import TodoList from './TodoList';
 import TodoInsert from './TodoInsert';
+import axios from "axios";
 import './App.css'
 
 function App() {
+  //Proxy test
+  const callApi = async () => {
+    axios.get('/api').then((res) => console.log(res.data.test));
+  };
+  useEffect(() => {
+    callApi();
+  });
+
+
   let nextId = 5;
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [insertToggle, setinsertToggle] = useState(false)
